@@ -1,12 +1,12 @@
 {
   "presets": [
-    ["env", {
-      "modules": false
-    }],
+    [
+      "env",
+      {
+        "modules": false
+      }
+    ],
     "react"
   ],
-  "plugins": [
-    "transform-object-rest-spread",
-    "transform-class-properties"
-  ]
+  "plugins": ["transform-object-rest-spread", "transform-class-properties"]
 }

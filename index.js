@@ -1,1 +1,1 @@
-export default from './src/FocusWithin'
+export { default } from './src/FocusWithin'

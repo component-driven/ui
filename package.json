@@ -3,11 +3,10 @@
   "version": "0.0.0-development",
   "description": "The missing JS API of the CSS `:focus-within` for React",
   "main": "dist/bundle.js",
-  "umd:main": "dist/bundle.umd.js",
   "module": "dist/bundle.m.js",
   "source": "index.js",
   "scripts": {
-    "build": "microbundle",
+    "build": "rollup -c",
     "pretest": "npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "posttest": "npm run format",
