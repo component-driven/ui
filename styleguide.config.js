@@ -12,7 +12,7 @@ module.exports = {
   },
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath, '.js')
-    return `import ${name} from 'react-focus-within';`
+    return `import ${name} from 'react-simple-focus-within';`
   },
   exampleMode: 'expand',
   usageMode: 'expand',

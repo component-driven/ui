@@ -1,5 +1,5 @@
 {
-  "name": "react-focus-within",
+  "name": "react-simple-focus-within",
   "version": "0.0.0-development",
   "description": "The missing JS API of the CSS `:focus-within` for React",
   "main": "dist/bundle.js",
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/okonet/react-focus-within.git"
+    "url": "https://github.com/okonet/react-simple-focus-within.git"
   },
   "keywords": [],
   "author": "Andrey Okonetchnikov <andrey@okonet.ru>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/okonet/react-focus-within/issues"
+    "url": "https://github.com/okonet/react-simple-focus-within/issues"
   },
-  "homepage": "https://github.com/okonet/react-focus-within#readme",
+  "homepage": "https://github.com/okonet/react-simple-focus-within#readme",
   "dependencies": {
     "prop-types": "^15.6.2"
   },
