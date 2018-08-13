@@ -2,8 +2,12 @@
   "name": "react-focus-within",
   "version": "0.0.0-development",
   "description": "The missing JS API of the CSS `:focus-within` for React",
-  "main": "index.js",
+  "main": "dist/bundle.js",
+  "umd:main": "dist/bundle.umd.js",
+  "module": "dist/bundle.m.js",
+  "source": "index.js",
   "scripts": {
+    "build": "microbundle",
     "pretest": "npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "posttest": "npm run format",
@@ -49,6 +53,8 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-styleguidist": "^7.2.2",
+    "rollup": "^0.64.1",
+    "rollup-plugin-babel": "^3.0.7",
     "styled-components": "^3.4.2",
     "webpack": "^4.16.5",
     "webpack-blocks": "^1.0.0"
