@@ -12,6 +12,17 @@ class FocusWithin extends React.Component {
 
   ref = React.createRef()
 
+  /** @public
+   * @function focus - calls `focus` method on the container node
+   * @return void
+   * */
+  focus() {
+    const node = this.ref.current
+    if (node != null && typeof node.focus === 'function') {
+      node.focus()
+    }
+  }
+
   onFocus = evt => {
     const { onFocus } = this.props
     const { focused } = this.state
