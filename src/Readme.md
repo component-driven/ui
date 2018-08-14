@@ -9,10 +9,10 @@ Open developer console to see log messages.
 ```jsx harmony
 <FocusWithin
   onFocus={() => {
-    console.log("Received focus");
+    console.log('Received focus')
   }}
   onBlur={() => {
-    console.log("Lost focus");
+    console.log('Lost focus')
   }}
 >
   <input type="text" placeholder="Click to activate first input" />
@@ -28,15 +28,18 @@ If you want to react to the focus change, use function as a children pattern. Wh
 ```jsx harmony
 <FocusWithin
   onFocus={() => {
-    console.log("Received focus");
+    console.log('Received focus')
   }}
   onBlur={() => {
-    console.log("Lost focus");
+    console.log('Lost focus')
   }}
 >
   {({ focused, getRef }) => (
     <form>
-      <fieldset ref={getRef} style={{ borderColor: focused ? "blue" : "#999" }}>
+      <fieldset
+        ref={getRef}
+        style={{ borderColor: focused ? 'blue' : '#999' }}
+      >
         <label htmlFor="input1">First input</label>
         <input
           id="input1"
@@ -50,8 +53,8 @@ If you want to react to the focus change, use function as a children pattern. Wh
           placeholder="Use Tab to activate next input"
         />
         <button type="submit">Submit</button>
-        <p style={{ color: focused ? "danger" : "text" }}>
-          {focused ? "Focus is inside" : "No focus here"}
+        <p style={{ color: focused ? 'danger' : 'text' }}>
+          {focused ? 'Focus is inside' : 'No focus here'}
         </p>
       </fieldset>
     </form>
@@ -64,76 +67,81 @@ If you want to react to the focus change, use function as a children pattern. Wh
 If you're using a CSS-in-JS library like [styled-components](https://www.styled-components.com) you need to pass a ref using `innerRef` prop. You can use `getRef` function from the parameters.
 
 ```js static
-({ focused: Boolean, getRef: Function }) => React.Element;
+;({ focused: Boolean, getRef: Function }) => React.Element
 ```
 
 ```jsx harmony
-const styled = require("styled-components").default;
-const StyledBox = styled("div")`
+const styled = require('styled-components').default
+const StyledBox = styled('div')`
   padding: 20px;
   border: 1px solid;
-  border-color: ${props => (props.focused ? "palevioletred" : "#999")};
+  border-color: ${props =>
+    props.focused ? 'palevioletred' : '#999'};
 
   & > * + * {
     margin-left: 20px;
   }
-`;
-<FocusWithin
+`
+;<FocusWithin
   onFocus={() => {
-    console.log("Received focus");
+    console.log('Received focus')
   }}
   onBlur={() => {
-    console.log("Lost focus");
+    console.log('Lost focus')
   }}
 >
   {({ focused, getRef }) => (
     <StyledBox innerRef={getRef} focused={focused}>
-      <input type="text" placeholder="Click to activate first input" />
-      <input type="text" placeholder="Use Tab to activate next input" />
+      <input
+        type="text"
+        placeholder="Click to activate first input"
+      />
+      <input
+        type="text"
+        placeholder="Use Tab to activate next input"
+      />
       <button>A button to try focus</button>
     </StyledBox>
   )}
-</FocusWithin>;
+</FocusWithin>
 ```
 
 _Note:_ It's recommended to use `:focus-within` selector instead of interpoaltions whenever possible.
 
 ## Focus method
 
-Sometimes it's needed to focus the container node programmatically. You can use the public method
-`focus`. Note that `tabIndex={-1}` needs to be set on non-interactive elements to make them
-receive focus.
+Sometimes it's needed to focus the container node programmatically. You can use the public method `focus`. Note that `tabIndex={-1}` needs to be set on non-interactive elements to make them receive focus.
 
 ```jsx harmony
-const ref = React.createRef();
-<div>
+const ref = React.createRef()
+;<div>
   <FocusWithin ref={ref}>
     {({ focused, getRef }) => (
       <span tabIndex={-1} ref={getRef}>
-        {focused ? "Focused" : "Not focused"}
+        {focused ? 'Focused' : 'Not focused'}
       </span>
     )}
   </FocusWithin>
   <button
     onClick={() => {
-      ref.current.focus();
+      ref.current.focus()
     }}
   >
     Focus the span
   </button>
-</div>;
+</div>
 ```
 
 ## Naïve focus trap implementation
 
 ```jsx harmony
-const firstInput = React.createRef();
+const firstInput = React.createRef()
 initialState = {
   enabled: false
-};
-<FocusWithin
+}
+;<FocusWithin
   onBlur={() => {
-    state.enabled && firstInput.current.focus();
+    state.enabled && firstInput.current.focus()
   }}
 >
   <fieldset>
@@ -148,14 +156,14 @@ initialState = {
       onClick={() => {
         setState({
           enabled: !state.enabled
-        });
+        })
         if (!state.enabled) {
-          firstInput.current.focus();
+          firstInput.current.focus()
         }
       }}
     >
-      {state.enabled ? "Disable" : "Enable"} focus trap
+      {state.enabled ? 'Disable' : 'Enable'} focus trap
     </button>
   </fieldset>
-</FocusWithin>;
+</FocusWithin>
 ```
