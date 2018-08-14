@@ -98,6 +98,32 @@ const StyledBox = styled("div")`
 
 _Note:_ It's recommended to use `:focus-within` selector instead of interpoaltions whenever possible.
 
+## Focus method
+
+Sometimes it's needed to focus the container node programmatically. You can use the public method
+`focus`. Note that `tabIndex={-1}` needs to be set on non-interactive elements to make them
+receive focus.
+
+```jsx harmony
+const ref = React.createRef();
+<div>
+  <FocusWithin ref={ref}>
+    {({ focused, getRef }) => (
+      <span tabIndex={-1} ref={getRef}>
+        {focused ? "Focused" : "Not focused"}
+      </span>
+    )}
+  </FocusWithin>
+  <button
+    onClick={() => {
+      ref.current.focus();
+    }}
+  >
+    Focus the span
+  </button>
+</div>;
+```
+
 ## Naïve focus trap implementation
 
 ```jsx harmony
