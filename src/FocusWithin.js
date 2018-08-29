@@ -1,5 +1,4 @@
 /* eslint-env node, browser */
-/* eslint no-process-env: 0 */
 
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -13,7 +12,20 @@ class FocusWithin extends React.Component {
     focused: false
   }
 
+  lastBlurEvent = null
+
   ref = React.createRef()
+
+  componentDidMount() {
+    /**
+     * In order for document.body to receive focus events
+     * it needs to be focusable. Adding `tabindex="-1"` makes it focusable
+     * but prevents it from receiving the focus on user interaction.
+     */
+    if (document != null) {
+      document.querySelector('body').setAttribute('tabindex', '-1')
+    }
+  }
 
   /**
    * Calls `focus` method on the container node
@@ -28,70 +40,106 @@ class FocusWithin extends React.Component {
     }
   }
 
+  /**
+   * Event handler that fires if the FocusEvent bubbled up to the document.
+   *
+   * @private
+   * @method _onFocusIn
+   *
+   * We check if 3 conditions are met:
+   * 1. Current state is focused
+   * 2. Blur occured inside the container
+   * 3. Focus occured outside of the container
+   *
+   * In this case we fire `onBlur` callback.
+   */
+  _onFocusIn = () => {
+    if (
+      this.lastBlurEvent &&
+      this.isInsideNode(this.ref.current, this.lastBlurEvent.target) &&
+      !this.isInsideNode(this.ref.current, document.activeElement)
+    ) {
+      this.setState(
+        {
+          focused: false
+        },
+        () => {
+          document.removeEventListener('focusin', this._onFocusIn)
+          this.props.onBlur(this.lastBlurEvent)
+        }
+      )
+    }
+  }
+
+  /**
+   * @private
+   * @method onFocus
+   */
   onFocus = evt => {
     const { onFocus } = this.props
     const { focused } = this.state
 
-    // TODO: Figure out if this check is "safe" or we should rely on SCU instead
+    /**
+     * If it's not focused yet we'll set the state to `focused: true`
+     */
     if (!focused) {
       this.setState(
         {
           focused: true
         },
         () => {
+          /**
+           * Attach a native event listener to the document. We have to use `focusin` since
+           * native `focus` event doesn't bubble. See
+           * https://developer.mozilla.org/en-US/docs/Web/Events/focusin and
+           * https://developer.mozilla.org/en-US/docs/Web/Events/focus
+           */
+          document.addEventListener('focusin', this._onFocusIn)
           onFocus(evt)
         }
       )
     }
   }
 
+  /**
+   * @private
+   * @method onBlur
+   */
   onBlur = evt => {
-    const { onBlur } = this.props
-    const { focused } = this.state
-
-    // Do not blur if focus within the container or we're editing
-    if (this.isFocusWithin(this.ref.current)) {
-      evt.preventDefault()
-      evt.stopPropagation()
-      return
-    }
-
-    // Persist event object
-    evt.persist()
-
-    if (focused) {
-      this.setState(
-        {
-          focused: false
-        },
-        () => {
-          onBlur(evt)
-        }
-      )
-    }
+    evt.persist() // Persist the original event since it will be fired later
+    this.lastBlurEvent = evt
   }
 
-  isFocusWithin = node => {
-    // We need to check `:focus-within` on the the parent element in order to work
+  /**
+   * Checks if the parentNode contains the node
+   *
+   * @private
+   * @method isInsideNode
+   * @param parentNode
+   * @param node
+   * @returns {boolean}
+   */
+  isInsideNode = (parentNode, node) => {
     if (process.env.NODE_ENV === 'development') {
-      if (
-        node == null ||
-        node.parentNode == null ||
-        typeof node.parentNode.querySelector !== 'function'
-      ) {
+      if (parentNode == null || Object(parentNode).nodeType !== 1) {
         throw new Error(
-          'A ref to a DOM Node with a valid parent Node must be supplied to' +
+          'A ref to a valid DOM Node must be supplied to' +
             ' FocusWithin.\n' +
             ' You have probably provided a ref to a React Element.\n See https://reactjs.org/docs/react-api.html#refs'
         )
       }
     }
-    return !!node.parentNode.querySelector(':focus-within')
+    return parentNode.contains(node)
   }
 
   render() {
     const { children } = this.props
     const { focused } = this.state
+
+    const events = {
+      onFocus: this.onFocus,
+      onBlur: this.onBlur
+    }
 
     if (typeof children === 'function') {
       return React.cloneElement(
@@ -99,15 +147,12 @@ class FocusWithin extends React.Component {
           focused,
           getRef: this.ref
         }),
-        {
-          onFocus: this.onFocus,
-          onBlur: this.onBlur
-        }
+        events
       )
     }
 
     return (
-      <div ref={this.ref} onFocus={this.onFocus} onBlur={this.onBlur} style={noOutlineStyles}>
+      <div ref={this.ref} style={noOutlineStyles} {...events}>
         {children}
       </div>
     )
