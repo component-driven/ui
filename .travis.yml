@@ -5,9 +5,7 @@ cache:
 node_js:
   - 10
 after_success:
-  - npm install --no-save semantic-release
-  - npm install --no-save --global travis-deploy-once@5.0.6
-  - travis-deploy-once "semantic-release"
+  - npx semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
