@@ -129,6 +129,10 @@ class FocusWithin extends React.Component {
         )
       }
     }
+    // return false in case parentNode does not exist
+    if (parentNode == null) {
+      return false
+    }
     return parentNode.contains(node)
   }
 
