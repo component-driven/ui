@@ -1,4 +1,4 @@
-FocusWithin is a component that allows detecting if one of its children has focus. It's using the CSS `:focus-within` selector under the hood to detect the focus and should be considered as a missing JS API for `focus-within`.
+FocusWithin is a component that allows detecting if one of its children has focus. It can be considered as a missing JS API for `focus-within`.
 
 FocusWithin will fire `onFocus` once one of its children will receive focus. Similarly `onBlur` is going to be fired once focus is left all its children.
 
