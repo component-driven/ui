@@ -12,6 +12,7 @@ class FocusWithin extends React.Component {
     focused: false
   }
 
+  isMounted = false
   lastBlurEvent = null
 
   ref = React.createRef()
@@ -25,6 +26,16 @@ class FocusWithin extends React.Component {
     if (document != null) {
       document.querySelector('body').setAttribute('tabindex', '-1')
     }
+    /* Mark as mounted */
+    this.isMounted = true
+  }
+
+  componentWillUnmount() {
+    /* Mark as unmounted */
+    this.isMounted = false
+
+    /* Since the onBlur for the unmounted component will never fire, we need to cleanup here. */
+    document.removeEventListener('focusin', this._onFocusIn)
   }
 
   /**
@@ -50,11 +61,13 @@ class FocusWithin extends React.Component {
    * 1. Current state is focused
    * 2. Blur occured inside the container
    * 3. Focus occured outside of the container
+   * 4. Component is still mounted to the DOM
    *
    * In this case we fire `onBlur` callback.
    */
   _onFocusIn = () => {
     if (
+      this.isMounted &&
       this.lastBlurEvent &&
       this.isInsideNode(this.ref.current, this.lastBlurEvent.target) &&
       !this.isInsideNode(this.ref.current, document.activeElement)
