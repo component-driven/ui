@@ -12,8 +12,8 @@ class FocusWithin extends React.Component {
     focused: false
   }
 
-  isMounted = false
-  lastBlurEvent = null
+  _isMounted = false
+  _lastBlurEvent = null
 
   ref = React.createRef()
 
@@ -27,12 +27,12 @@ class FocusWithin extends React.Component {
       document.querySelector('body').setAttribute('tabindex', '-1')
     }
     /* Mark as mounted */
-    this.isMounted = true
+    this._isMounted = true
   }
 
   componentWillUnmount() {
     /* Mark as unmounted */
-    this.isMounted = false
+    this._isMounted = false
 
     /* Since the onBlur for the unmounted component will never fire, we need to cleanup here. */
     document.removeEventListener('focusin', this._onFocusIn)
@@ -67,9 +67,9 @@ class FocusWithin extends React.Component {
    */
   _onFocusIn = () => {
     if (
-      this.isMounted &&
-      this.lastBlurEvent &&
-      this.isInsideNode(this.ref.current, this.lastBlurEvent.target) &&
+      this._isMounted &&
+      this._lastBlurEvent &&
+      this.isInsideNode(this.ref.current, this._lastBlurEvent.target) &&
       !this.isInsideNode(this.ref.current, document.activeElement)
     ) {
       this.setState(
@@ -78,7 +78,7 @@ class FocusWithin extends React.Component {
         },
         () => {
           document.removeEventListener('focusin', this._onFocusIn)
-          this.props.onBlur(this.lastBlurEvent)
+          this.props.onBlur(this._lastBlurEvent)
         }
       )
     }
@@ -120,7 +120,7 @@ class FocusWithin extends React.Component {
    */
   onBlur = evt => {
     evt.persist() // Persist the original event since it will be fired later
-    this.lastBlurEvent = evt
+    this._lastBlurEvent = evt
   }
 
   /**
