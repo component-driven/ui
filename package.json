@@ -28,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/component-driven/react-focus-utils/issues"
   },
-  "homepage": "https://github.com/component-driven/react-focus-utils#readme",
+  "homepage": "https://react-focus-utils.netlify.com",
   "dependencies": {
     "prop-types": "^15.6.2"
   },
