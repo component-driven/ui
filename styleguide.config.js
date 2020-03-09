@@ -19,7 +19,10 @@ module.exports = {
   compilerConfig: {
     transforms: {
       // Support for styled-components
-      dangerousTaggedTemplateString: true
+      dangerousTaggedTemplateString: true,
+
+      // "Support" for `import` syntax
+      moduleImport: false
     }
   },
   getComponentPathLine(componentPath) {
