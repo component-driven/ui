@@ -13,7 +13,7 @@ module.exports = {
   },
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath, '.js')
-    return `import ${name} from '@component-driven/react-focus-utils';`
+    return `import { ${name} } from '@component-driven/react-focus-utils';`
   },
   exampleMode: 'expand',
   usageMode: 'expand',

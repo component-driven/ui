@@ -1,1 +1,1 @@
-export { default } from './FocusWithin'
+export { default as FocusWithin } from './FocusWithin'
