@@ -1,10 +1,10 @@
 {
-  "name": "react-simple-focus-within",
+  "name": "@component-driven/react-focus-utils",
   "version": "0.0.0-development",
-  "description": "The missing JS API of the CSS `:focus-within` for React",
+  "description": "Utilities to work with `:focus` & `:focus-within` in React",
   "main": "dist/index.js",
   "module": "dist/index.m.js",
-  "source": "index.js",
+  "source": "src/index.js",
   "scripts": {
     "prebuild": "rm -rf dist && mkdir dist",
     "build": "npm run build:cjs && npm run build:esm",
@@ -20,15 +20,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/okonet/react-simple-focus-within.git"
+    "url": "https://github.com/component-driven/react-focus-utils.git"
   },
   "keywords": [],
   "author": "Andrey Okonetchnikov <andrey@okonet.ru>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/okonet/react-simple-focus-within/issues"
+    "url": "https://github.com/component-driven/react-focus-utils/issues"
   },
-  "homepage": "https://github.com/okonet/react-simple-focus-within#readme",
+  "homepage": "https://github.com/component-driven/react-focus-utils#readme",
   "dependencies": {
     "prop-types": "^15.6.2"
   },

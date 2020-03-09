@@ -3,7 +3,7 @@ import babel from "rollup-plugin-babel"; // eslint-disable-line
 const env = process.env.NODE_ENV
 
 const config = {
-  input: 'index.js',
+  input: 'src/index.js',
   output: {},
   plugins: [
     babel({
