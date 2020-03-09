@@ -8,7 +8,6 @@ const config = {
   plugins: [
     babel({
       exclude: 'node_modules/**', // only transpile our source code
-      plugins: ['external-helpers']
     })
   ],
   external: ['react', 'prop-types']

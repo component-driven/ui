@@ -1,9 +1,12 @@
 const path = require('path')
-const { createConfig, babel } = require("webpack-blocks"); // eslint-disable-line
+const { createConfig } = require("@webpack-blocks/webpack");
+const babel = require("@webpack-blocks/babel");
 
 module.exports = {
   components: 'src/**/[A-Z]*.js',
-  webpackConfig: createConfig([babel()]),
+  webpackConfig: createConfig([
+    babel()
+  ]),
   compilerConfig: {
     transforms: {
       // Support for styled-components

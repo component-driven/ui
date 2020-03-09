@@ -1,7 +1,7 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
         "targets": {
           "browsers": ["ie >= 11"]
@@ -11,7 +11,7 @@
         "loose": true
       }
     ],
-    "react"
+    "@babel/react"
   ],
-  "plugins": ["transform-object-rest-spread", "transform-class-properties"]
+  "plugins": ["@babel/plugin-proposal-class-properties"]
 }
