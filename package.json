@@ -30,6 +30,7 @@
   },
   "homepage": "https://react-focus-utils.netlify.com",
   "dependencies": {
+    "polished": "^3.4.4",
     "prop-types": "^15.6.2"
   },
   "devDependencies": {
@@ -42,6 +43,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
+    "focus-visible": "^5.0.2",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
     "prettier": "^1.14.2",
@@ -59,7 +61,8 @@
   },
   "peerDependencies": {
     "react": ">=16.0",
-    "react-dom": ">=16.0"
+    "react-dom": ">=16.0",
+    "focus-visible": ">=5.0"
   },
   "husky": {
     "hooks": {

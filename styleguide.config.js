@@ -3,7 +3,18 @@ const { createConfig } = require('@webpack-blocks/webpack')
 const babel = require('@webpack-blocks/babel')
 
 module.exports = {
-  components: 'src/**/[A-Z]*.js',
+  sections: [
+    {
+      name: 'Components',
+      components: 'src/FocusWithin.js',
+      sectionDepth: 1
+    },
+    {
+      name: 'Utilities',
+      components: 'src/mixins.js',
+      sectionDepth: 1
+    }
+  ],
   webpackConfig: createConfig([babel()]),
   compilerConfig: {
     transforms: {
@@ -17,5 +28,5 @@ module.exports = {
   },
   exampleMode: 'expand',
   usageMode: 'expand',
-  showSidebar: false
+  showSidebar: true
 }
