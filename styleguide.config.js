@@ -6,7 +6,7 @@ module.exports = {
   sections: [
     {
       name: 'Components',
-      components: 'src/FocusWithin.js',
+      components: 'src/[A-Z]*.js',
       sectionDepth: 1
     },
     {
