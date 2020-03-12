@@ -43,9 +43,7 @@ export function focusRingStyles(color, disabled = false) {
  *
  * @example
  * styled.div`
- *   &:focus {
- *     ${focusRing('red')}
- *   }
+ *   ${focusRing('red')}
  * `
  */
 export function focusRing(color, disabled = false, hover = false) {

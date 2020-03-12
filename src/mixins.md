@@ -7,16 +7,30 @@ Creates consistent `:focus` styles for any element.
 ```javascript
 import 'focus-visible' // :focus-visible polyfill
 import styled from 'styled-components'
-import { focusRing } from './'
+import { focusRing, WithSelector } from './'
 
 const Button = styled('button')`
   padding: 10px;
   border: 2px solid blue;
   border-radius: 4px;
+  :hover {
+    background: red;
+  }
   ${focusRing('orange')}
 `
 
-;<Button type={'submit'}>Button</Button>
+;<>
+  <Button>Button</Button>{' '}
+  <WithSelector selector=":hover">
+    <Button>Focused</Button>
+  </WithSelector>
+  <WithSelector selector=":focus">
+    <Button>Focused</Button>
+  </WithSelector>
+  <WithSelector selector=".focus-visible">
+    <Button>Focused</Button>
+  </WithSelector>
+</>
 ```
 
 ### `focusBoxShadow`
