@@ -10,7 +10,7 @@
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "NODE_ENV=cjs rollup -c -o dist/index.js",
     "build:esm": "NODE_ENV=esm rollup -c -o dist/index.m.js",
-    "prepublishOnly": "npm run build",
+    "prepublish": "npm run build",
     "pretest": "npm run lint",
     "test": "echo \"Error: no test specified\" && exit 0",
     "lint": "eslint .",
