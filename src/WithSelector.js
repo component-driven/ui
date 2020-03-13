@@ -13,7 +13,7 @@ const useAddSelector = (ref, selector) => {
   useEffect(() => {
     const className = ref.current.classList[ref.current.classList.length - 1]
     const fullSelector = `${className && `.${className}`}${selector}`
-    const classNameWithSelector = fullSelector.replace(/(.)(:|\.)/, '$1-')
+    const classNameWithSelector = fullSelector.replace(/(.)(:|\.)/g, '$1-')
     let newRule = ''
     for (const ss of document.styleSheets) {
       for (const rule of ss.cssRules) {

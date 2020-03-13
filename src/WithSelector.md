@@ -12,7 +12,7 @@ const Button = styled('button')`
   border-radius: 4px;
   background: #efefef;
 
-  &:hover {
+  &:hover:enabled {
     background: #ccc;
     border-color: red;
   }
@@ -35,7 +35,7 @@ const Button = styled('button')`
 
 ;<>
   <Button>normal</Button>
-  <WithSelector selector=":hover">
+  <WithSelector selector=":hover:enabled">
     <Button>hover</Button>
   </WithSelector>
   <WithSelector selector=":focus">
