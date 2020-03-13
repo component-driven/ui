@@ -18,6 +18,9 @@
     "styleguide:build": "styleguidist build",
     "start": "styleguidist server"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/component-driven/react-focus-utils.git"
