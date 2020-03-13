@@ -38,6 +38,7 @@
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
+    "@rollup/plugin-node-resolve": "^7.1.1",
     "@webpack-blocks/babel": "^2.0.1",
     "@webpack-blocks/webpack": "^2.0.1",
     "babel-eslint": "^10.1.0",
@@ -50,7 +51,7 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-styleguidist": "^11.0.0",
-    "rollup": "^2.0.2",
+    "rollup": "^2.0.6",
     "rollup-plugin-babel": "^4.4.0",
     "styled-components": "^5.0.1",
     "webpack": "^4.16.5"
