@@ -7,6 +7,7 @@ function addStylesheetRule(rule) {
   styleSheet.insertRule(rule, styleSheet.cssRules.length)
 }
 
+// Inspired by https://codesandbox.io/s/pseudo-class-sticker-sheet-jiu2x
 const useAddSelector = (ref, selector) => {
   const [modifiedClassName, setModifiedClassName] = useState('')
   useEffect(() => {
