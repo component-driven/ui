@@ -24,9 +24,6 @@ const Button = styled('button')`
   <WithSelector selector=":hover">
     <Button>Focused</Button>
   </WithSelector>
-  <WithSelector selector=":focus">
-    <Button>Focused</Button>
-  </WithSelector>
   <WithSelector selector=".focus-visible">
     <Button>Focused</Button>
   </WithSelector>
