@@ -1,4 +1,4 @@
-import { darken, transparentize } from 'polished'
+import { transparentize } from 'polished'
 
 /**
  * Mixin to generate consistent box-shadow rule for focus rings and selections
@@ -31,7 +31,7 @@ export function focusRingStyles(color, disabled = false) {
   }
   return {
     outline: 'none',
-    borderColor: darken(0.1, color),
+    borderColor: color,
     transition: 'box-shadow .25s',
     ...focusBoxShadow(color)
   }

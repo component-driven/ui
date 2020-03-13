@@ -1,6 +1,6 @@
 # react-focus-utils
 
-[![Build Status](https://travis-ci.org/okonet/react-simple-focus-within.svg)](https://travis-ci.org/okonet/react-simple-focus-within) [![npm](https://img.shields.io/npm/v/react-simple-focus-within.svg)](https://www.npmjs.com/package/react-simple-focus-within)
+[![npm](https://img.shields.io/npm/v/react-simple-focus-within.svg)](https://www.npmjs.com/package/react-simple-focus-within) [![npm](https://img.shields.io/npm/v/@component-driven/react-focus-utils.svg)](https://www.npmjs.com/package/@component-driven/react-focus-utils)
 
 This package includes:
 
