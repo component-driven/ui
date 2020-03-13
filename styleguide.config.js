@@ -1,20 +1,35 @@
 const path = require('path')
-const { createConfig, babel } = require("webpack-blocks"); // eslint-disable-line
+const { createConfig } = require('@webpack-blocks/webpack')
+const babel = require('@webpack-blocks/babel')
 
 module.exports = {
-  components: 'src/**/[A-Z]*.js',
+  sections: [
+    {
+      name: 'Components',
+      components: 'src/[A-Z]*.js',
+      sectionDepth: 1
+    },
+    {
+      name: 'Utilities',
+      components: 'src/mixins.js',
+      sectionDepth: 1
+    }
+  ],
   webpackConfig: createConfig([babel()]),
   compilerConfig: {
     transforms: {
       // Support for styled-components
-      dangerousTaggedTemplateString: true
+      dangerousTaggedTemplateString: true,
+
+      // "Support" for `import` syntax
+      moduleImport: false
     }
   },
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath, '.js')
-    return `import ${name} from 'react-simple-focus-within';`
+    return `import { ${name} } from '@component-driven/react-focus-utils';`
   },
   exampleMode: 'expand',
   usageMode: 'expand',
-  showSidebar: false
+  showSidebar: true
 }
