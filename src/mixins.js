@@ -32,7 +32,7 @@ export function focusRingStyles(color, disabled = false) {
   return {
     outline: 'none',
     borderColor: darken(0.1, color),
-    transition: 'box-shadow .125s',
+    transition: 'box-shadow .25s',
     ...focusBoxShadow(color)
   }
 }

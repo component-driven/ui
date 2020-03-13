@@ -16,7 +16,7 @@ const Button = styled('button')`
   :hover {
     background: red;
   }
-  ${focusRing('orange')}
+  ${focusRing('red')}
 `
 
 ;<>
