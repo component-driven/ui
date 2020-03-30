@@ -1,14 +1,16 @@
 import { transparentize } from '@theme-ui/color'
 
+// Check if it's a props object or the theme
+// theme-ui provides theme as an argument where styled-system uses props.theme
+function getTheme(theme = {}) {
+  return theme['theme'] || theme
+}
 /**
  * Mixin to generate consistent box-shadow rule for focus rings and selections
  */
-export const focusBoxShadow = color => (t = {}) => {
-  // Check if it's a props object or the theme
-  // theme-ui provides theme as an argument where styled-system uses props.theme
-  let theme = t.theme || t
+export const focusBoxShadow = color => (theme = {}) => {
   return {
-    boxShadow: `0 0 0 0.2em ${transparentize(color, 0.75)(theme)}`
+    boxShadow: `0 0 0 0.2em ${transparentize(color, 0.75)(getTheme(theme))}`
   }
 }
 
@@ -23,7 +25,8 @@ export const focusBoxShadow = color => (t = {}) => {
  *   }
  * `
  */
-export const focusRingStyles = (color, disabled = false) => (theme = {}) => {
+export const focusRingStyles = (color, disabled = false) => theme => {
+  const themeColor = transparentize(color, 0)(getTheme(theme)) // This serves as a getter from theme
   if (disabled) {
     return {
       outline: 'none'
@@ -31,9 +34,9 @@ export const focusRingStyles = (color, disabled = false) => (theme = {}) => {
   }
   return {
     outline: 'none',
-    borderColor: transparentize(color, 0)(theme), // This serves as a getter from theme
+    borderColor: themeColor,
     transition: 'box-shadow .25s',
-    ...focusBoxShadow(color)(theme)
+    ...focusBoxShadow(themeColor)(theme)
   }
 }
 
@@ -46,17 +49,18 @@ export const focusRingStyles = (color, disabled = false) => (theme = {}) => {
  *   ${focusRing('red')}
  * `
  */
-export const focusRing = (color, disabled = false, hover = false) => (theme = {}) => {
+export const focusRing = (color, disabled = false, hover = false) => theme => {
+  const styles = focusRingStyles(color, disabled)(getTheme(theme))
   const baseStyles = {
     '.js-focus-visible &:focus:not(.focus-visible)': {
       outline: 0
     },
-    '&.focus-visible': focusRingStyles(color, disabled)(theme)
+    '&.focus-visible': styles
   }
   if (hover) {
     return {
       ...baseStyles,
-      '&:hover:not(:disabled)': focusRingStyles(color, disabled)(theme)
+      '&:hover:not(:disabled)': styles
     }
   }
   return baseStyles

@@ -6,7 +6,7 @@ Creates consistent `:focus` styles for any element.
 
 ```javascript
 import 'focus-visible' // :focus-visible polyfill
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { focusRing, WithSelector } from './'
 
 const Button = styled('button')`
@@ -16,10 +16,16 @@ const Button = styled('button')`
   :hover {
     background: red;
   }
-  ${focusRing('red')}
+  ${focusRing('primary')}
 `
 
-;<>
+;<ThemeProvider
+  theme={{
+    colors: {
+      primary: '#fc0'
+    }
+  }}
+>
   <Button>Button</Button>{' '}
   <WithSelector selector=":hover">
     <Button>Focused</Button>
@@ -27,7 +33,7 @@ const Button = styled('button')`
   <WithSelector selector=".focus-visible">
     <Button>Focused</Button>
   </WithSelector>
-</>
+</ThemeProvider>
 ```
 
 ### `focusBoxShadow`
