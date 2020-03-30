@@ -31,7 +31,7 @@ export const focusRingStyles = (color, disabled = false) => (theme = {}) => {
   }
   return {
     outline: 'none',
-    borderColor: color,
+    borderColor: transparentize(color, 0), // This serves as a getter from theme
     transition: 'box-shadow .25s',
     ...focusBoxShadow(color)(theme)
   }
