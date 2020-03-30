@@ -1,14 +1,14 @@
-import { transparentize } from 'polished'
+import { transparentize } from '@theme-ui/color'
 
 /**
  * Mixin to generate consistent box-shadow rule for focus rings and selections
  */
-export function focusBoxShadow(color, hasInset = false) {
+export const focusBoxShadow = color => (t = {}) => {
+  // Check if it's a props object or the theme
+  // theme-ui provides theme as an argument where styled-system uses props.theme
+  let theme = t.theme || t
   return {
-    boxShadow: `
-        0 0 0 0.2em ${transparentize(0.75, color)}
-        ${hasInset ? `, 0 0 0 1px ${color} inset` : ''}
-        `
+    boxShadow: `0 0 0 0.2em ${transparentize(color, 0.75)(theme)}`
   }
 }
 
@@ -23,7 +23,7 @@ export function focusBoxShadow(color, hasInset = false) {
  *   }
  * `
  */
-export function focusRingStyles(color, disabled = false) {
+export const focusRingStyles = (color, disabled = false) => (theme = {}) => {
   if (disabled) {
     return {
       outline: 'none'
@@ -33,7 +33,7 @@ export function focusRingStyles(color, disabled = false) {
     outline: 'none',
     borderColor: color,
     transition: 'box-shadow .25s',
-    ...focusBoxShadow(color)
+    ...focusBoxShadow(color)(theme)
   }
 }
 
@@ -46,17 +46,17 @@ export function focusRingStyles(color, disabled = false) {
  *   ${focusRing('red')}
  * `
  */
-export function focusRing(color, disabled = false, hover = false) {
+export const focusRing = (color, disabled = false, hover = false) => (theme = {}) => {
   const baseStyles = {
     '.js-focus-visible &:focus:not(.focus-visible)': {
       outline: 0
     },
-    '&.focus-visible': focusRingStyles(color, disabled)
+    '&.focus-visible': focusRingStyles(color, disabled)(theme)
   }
   if (hover) {
     return {
       ...baseStyles,
-      '&:hover:not(:disabled)': focusRingStyles(color, disabled)
+      '&:hover:not(:disabled)': focusRingStyles(color, disabled)(theme)
     }
   }
   return baseStyles
