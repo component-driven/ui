@@ -35,15 +35,25 @@ const Button = styled('button')`
 Can be used separately to add consistent styles to other elements
 
 ```javascript
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { focusBoxShadow } from './'
+
+const theme = {
+  colors: {
+    token: '#fc0'
+  }
+}
 
 const Example = styled('div')`
   padding: 10px;
-  ${focusBoxShadow('blue', true)}
+  border: 1px solid;
+  border-color: ${props => props.theme.colors.token};
+  ${focusBoxShadow('token')}
 `
 
-;<Example>Box with box-shadow "focus" effect</Example>
+;<ThemeProvider theme={theme}>
+  <Example>Box with box-shadow "focus" effect</Example>
+</ThemeProvider>
 ```
 
 ### `disabled`
