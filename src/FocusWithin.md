@@ -6,7 +6,7 @@ FocusWithin will fire `onFocus` once one of its children will receive focus. Sim
 
 Open developer console to see log messages.
 
-```jsx harmony
+```jsx
 <FocusWithin
   onFocus={() => {
     console.log('Received focus')
@@ -25,7 +25,7 @@ Open developer console to see log messages.
 
 If you want to react to the focus change, use function as a children pattern. When function is used as children, you _must_ provide the `ref` prop.
 
-```jsx harmony
+```jsx
 <FocusWithin
   onFocus={() => {
     console.log('Received focus')
@@ -70,7 +70,7 @@ If you're using a CSS-in-JS library like [styled-components](https://www.styled-
 ;({ focused: Boolean, getRef: Function }) => React.Element
 ```
 
-```jsx harmony
+```jsx
 const styled = require('styled-components').default
 const StyledBox = styled('div')`
   padding: 20px;
@@ -112,7 +112,7 @@ _Note:_ It's recommended to use `:focus-within` selector instead of interpoaltio
 
 Sometimes it's needed to focus the container node programmatically. You can use the public method `focus`. Note that `tabIndex={-1}` needs to be set on non-interactive elements to make them receive focus.
 
-```jsx harmony
+```jsx
 const ref = React.createRef()
 ;<div>
   <FocusWithin ref={ref}>
@@ -134,7 +134,7 @@ const ref = React.createRef()
 
 ## Naïve focus trap implementation
 
-```jsx harmony
+```jsx
 const firstInput = React.createRef()
 initialState = {
   enabled: false

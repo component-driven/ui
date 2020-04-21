@@ -2,7 +2,7 @@ Allows previewing a wrapped component in a specific pseudo-state like hover, foc
 
 Please note, that it required the pseudo-styles to be present on your component. Doesn't work with default HTML elements without pseudo-styles overrides.
 
-```jsx harmony
+```jsx
 import styled from 'styled-components'
 
 const Button = styled('button')`
