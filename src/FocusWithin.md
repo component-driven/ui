@@ -135,13 +135,19 @@ const ref = React.createRef()
 ## Naïve focus trap implementation
 
 ```jsx
-const firstInput = React.createRef()
-initialState = {
-  enabled: false
-}
+import { useRef, useState, useEffect } from 'react'
+
+const firstInput = useRef(null)
+const [enabled, setEnabled] = useState(false)
+
+useEffect(() => {
+  if (enabled) {
+    firstInput.current.focus()
+  }
+}, [enabled])
 ;<FocusWithin
   onBlur={() => {
-    state.enabled && firstInput.current.focus()
+    enabled && firstInput.current.focus()
   }}
 >
   <fieldset>
@@ -154,15 +160,10 @@ initialState = {
     <button
       type="submit"
       onClick={() => {
-        setState({
-          enabled: !state.enabled
-        })
-        if (!state.enabled) {
-          firstInput.current.focus()
-        }
+        setEnabled(!enabled)
       }}
     >
-      {state.enabled ? 'Disable' : 'Enable'} focus trap
+      {enabled ? 'Disable' : 'Enable'} focus trap
     </button>
   </fieldset>
 </FocusWithin>
