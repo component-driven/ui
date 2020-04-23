@@ -1,0 +1,19 @@
+{
+  "name": "@component-driven/react-focus-within",
+  "description": "The missing JS API of the CSS `:focus-within` for React",
+  "version": "1.0.0",
+  "main": "dist/react-focus-within.cjs.js",
+  "module": "dist/react-focus-within.esm.js",
+  "dependencies": {
+    "prop-types": "^15.6.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.0",
+    "react-dom": ">=16.0"
+  },
+  "author": "Andrey Okonetchnikov <andrey@okonet.ru>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

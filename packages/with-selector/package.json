@@ -1,0 +1,16 @@
+{
+  "name": "@component-driven/with-selector",
+  "description": "Preview components in specific pseudo-state like :hover, :focused, :active.",
+  "version": "1.0.0",
+  "main": "dist/with-selector.cjs.js",
+  "module": "dist/with-selector.esm.js",
+  "peerDependencies": {
+    "react": ">=16.0",
+    "react-dom": ">=16.0"
+  },
+  "author": "Andrey Okonetchnikov <andrey@okonet.ru>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}
