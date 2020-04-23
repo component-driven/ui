@@ -32,5 +32,11 @@ module.exports = {
   },
   exampleMode: 'expand',
   usageMode: 'expand',
-  showSidebar: true
+  showSidebar: true,
+  ribbon: {
+    // Link to open on the ribbon click (required)
+    url: 'https://github.com/component-driven/react-focus-utils',
+    // Text to show on the ribbon (optional)
+    text: 'Fork me on GitHub'
+  }
 }
