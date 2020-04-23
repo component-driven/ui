@@ -1,31 +1,22 @@
 {
-  "name": "@component-driven/react-focus-utils",
-  "version": "0.0.0-development",
-  "description": "Utilities to work with `:focus` & `:focus-within` in React",
-  "main": "dist/index.js",
-  "module": "dist/index.m.js",
-  "source": "src/index.js",
+  "private": true,
+  "name": "@component-driven/ui",
+  "workspaces": [
+    "packages/*"
+  ],
+  "preconstruct": {
+    "packages": [
+      "packages/*"
+    ]
+  },
   "scripts": {
-    "prebuild": "rm -rf dist && mkdir dist",
-    "build": "npm run build:cjs && npm run build:esm",
-    "build:cjs": "NODE_ENV=cjs rollup -c -o dist/index.js",
-    "build:esm": "NODE_ENV=esm rollup -c -o dist/index.m.js",
-    "prepare": "npm run build",
-    "pretest": "npm run lint",
+    "postinstall": "preconstruct dev",
     "test": "echo \"Error: no test specified\" && exit 0",
     "lint": "eslint .",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
     "start": "styleguidist server"
   },
-  "files": [
-    "dist"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/component-driven/react-focus-utils.git"
-  },
-  "keywords": [],
   "author": "Andrey Okonetchnikov <andrey@okonet.ru>",
   "license": "MIT",
   "bugs": {
@@ -33,47 +24,34 @@
   },
   "homepage": "https://react-focus-utils.netlify.com",
   "dependencies": {
-    "@theme-ui/color": "^0.3.1",
-    "prop-types": "^15.6.2"
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "styled-components": "^5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
-    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@preconstruct/cli": "^1.1.12",
     "@webpack-blocks/babel": "^2.0.1",
     "@webpack-blocks/webpack": "^2.0.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
-    "focus-visible": "^5.0.2",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
     "prettier": "^1.14.2",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
     "react-styleguidist": "^11.0.0",
-    "rollup": "^2.0.6",
-    "rollup-plugin-babel": "^4.4.0",
-    "styled-components": "^5.0.1",
     "webpack": "^4.16.5"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",
     "*.{js,json,md}": "prettier --write"
   },
-  "peerDependencies": {
-    "react": ">=16.0",
-    "react-dom": ">=16.0",
-    "focus-visible": ">=5.0"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

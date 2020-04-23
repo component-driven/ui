@@ -6,28 +6,29 @@ module.exports = {
   sections: [
     {
       name: 'Components',
-      components: 'src/[A-Z]*.js',
+      components: 'packages/**/[A-Z]*.js',
       sectionDepth: 1
     },
     {
       name: 'Utilities',
-      components: 'src/mixins.js',
+      components: 'packages/**/mixins.js',
       sectionDepth: 1
     }
   ],
-  webpackConfig: createConfig([babel()]),
-  compilerConfig: {
-    transforms: {
-      // Support for styled-components
-      dangerousTaggedTemplateString: true,
 
-      // "Support" for `import` syntax
-      moduleImport: false
-    }
+  webpackConfig: createConfig([babel()]),
+  getExampleFilename(componentPath) {
+    return path.join(path.dirname(componentPath), '..', 'Readme.md')
   },
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath, '.js')
-    return `import { ${name} } from '@component-driven/react-focus-utils';`
+    const packageJSON = require(path.join(
+      __dirname,
+      path.dirname(componentPath),
+      '..',
+      'package.json'
+    ))
+    return `import ${name} from ${packageJSON.name}`
   },
   exampleMode: 'expand',
   usageMode: 'expand',

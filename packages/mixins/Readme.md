@@ -7,7 +7,8 @@ Creates consistent `:focus` styles for any element.
 ```javascript
 import 'focus-visible' // :focus-visible polyfill
 import styled, { ThemeProvider } from 'styled-components'
-import { focusRing, WithSelector } from './'
+import WithSelector from '@component-driven/with-selector'
+import { focusRing } from './'
 
 const Button = styled('button')`
   padding: 10px;
