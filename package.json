@@ -27,7 +27,6 @@
   },
   "homepage": "https://react-focus-utils.netlify.com",
   "dependencies": {
-    "@changesets/cli": "^2.6.5",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "styled-components": "^5.0.1"
@@ -37,6 +36,7 @@
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
+    "@changesets/cli": "^2.6.5",
     "@preconstruct/cli": "^1.1.12",
     "@webpack-blocks/babel": "^2.0.1",
     "@webpack-blocks/webpack": "^2.0.1",
