@@ -1,5 +1,6 @@
 {
   "name": "@component-driven/mixins",
+  "description": "UI mixins to use with CSS-in-JS libraries",
   "version": "1.0.0",
   "main": "dist/mixins.cjs.js",
   "module": "dist/mixins.esm.js",
