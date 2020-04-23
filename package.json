@@ -12,6 +12,8 @@
   "scripts": {
     "postinstall": "preconstruct dev",
     "build": "preconstruct build",
+    "prerelease": "npm run build",
+    "release": "changeset publish",
     "start": "styleguidist server",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
@@ -25,6 +27,7 @@
   },
   "homepage": "https://react-focus-utils.netlify.com",
   "dependencies": {
+    "@changesets/cli": "^2.6.5",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "styled-components": "^5.0.1"
