@@ -28,7 +28,7 @@ const Button = styled('button')`
     color: #fff;
   }
 
-  &.class-name {
+  &.custom-class {
     background: green;
   }
 `
@@ -44,7 +44,7 @@ const Button = styled('button')`
   <WithSelector selector=":active">
     <Button>active</Button>
   </WithSelector>
-  <WithSelector selector=".class-name">
+  <WithSelector selector=".custom-class">
     <Button>class-name</Button>
   </WithSelector>
 </>

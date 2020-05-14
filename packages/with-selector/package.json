@@ -12,5 +12,8 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "nanoid": "^3.1.7"
   }
 }
