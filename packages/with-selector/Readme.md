@@ -26,9 +26,15 @@ const Button = styled('button')`
     border-color: #333;
     background: #888;
     color: #fff;
+
+    &:not([aria-disabled='true']) {
+      background: cadetblue;
+      border-color: darkblue;
+      color: #f5f5f5;
+    }
   }
 
-  &.class-name {
+  &.custom-class {
     background: green;
   }
 `
@@ -44,7 +50,10 @@ const Button = styled('button')`
   <WithSelector selector=":active">
     <Button>active</Button>
   </WithSelector>
-  <WithSelector selector=".class-name">
+  <WithSelector selector={`:active:not([aria-disabled="true"])`}>
+    <Button>active:not([aria-disabled="true"])</Button>
+  </WithSelector>
+  <WithSelector selector=".custom-class">
     <Button>class-name</Button>
   </WithSelector>
 </>

@@ -1,4 +1,5 @@
 import { cloneElement, useEffect, useRef, useState } from 'react'
+import { customAlphabet } from 'nanoid'
 
 function addStylesheetRule(rule) {
   const styleEl = document.createElement('style')
@@ -7,19 +8,27 @@ function addStylesheetRule(rule) {
   styleSheet.insertRule(rule, styleSheet.cssRules.length)
 }
 
+const generateCssClassName = customAlphabet(
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+  32
+)
+
 // Inspired by https://codesandbox.io/s/pseudo-class-sticker-sheet-jiu2x
 const useAddSelector = (ref, selector) => {
   const [modifiedClassName, setModifiedClassName] = useState('')
   useEffect(() => {
     const className = ref.current.classList[ref.current.classList.length - 1]
     const fullSelector = `${className && `.${className}`}${selector}`
-    const classNameWithSelector = fullSelector.replace(/(.)(:|\.)/g, '$1-')
+    // NOTE: This could be improved, because checking the provided selector starts with a '.'
+    // is probably not the best way to determine the selector is a class name or not.
+    const isClassNameSelector = selector.startsWith('.')
     let newRule = ''
     for (const ss of document.styleSheets) {
       for (const rule of ss.cssRules) {
         if (fullSelector === rule.selectorText) {
-          newRule = `${classNameWithSelector} { ${rule.style.cssText}}`
-          setModifiedClassName(classNameWithSelector.substring(1))
+          const cssClassName = isClassNameSelector ? selector : `.${generateCssClassName()}`
+          newRule = `${cssClassName} { ${rule.style.cssText}}`
+          setModifiedClassName(cssClassName.substring(1))
           break
         }
       }
