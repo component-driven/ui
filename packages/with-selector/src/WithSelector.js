@@ -19,7 +19,8 @@ const useAddSelector = (ref, selector) => {
   useEffect(() => {
     const className = ref.current.classList[ref.current.classList.length - 1]
     const fullSelector = `${className && `.${className}`}${selector}`
-    // NOTE: This could be improved!
+    // NOTE: This could be improved, because checking the provided selector starts with a '.'
+    // is probably not the best way to determine the selector is a class name or not.
     const isClassNameSelector = selector.startsWith('.')
     let newRule = ''
     for (const ss of document.styleSheets) {
