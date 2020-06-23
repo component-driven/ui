@@ -64,7 +64,7 @@ If you want to react to the focus change, use function as a children pattern. Wh
 
 ## Using with CSS-in-JS libs
 
-If you're using a CSS-in-JS library like [styled-components](https://www.styled-components.com) you need to pass a ref using `innerRef` prop. You can use `getRef` function from the parameters.
+If you're using a CSS-in-JS library like [styled-components](https://www.styled-components.com) you need to pass a ref using `ref` prop. You can use `getRef` function from the parameters.
 
 ```js static
 ;({ focused: Boolean, getRef: Function }) => React.Element
@@ -91,7 +91,7 @@ const StyledBox = styled('div')`
   }}
 >
   {({ focused, getRef }) => (
-    <StyledBox innerRef={getRef} focused={focused}>
+    <StyledBox ref={getRef} focused={focused}>
       <input
         type="text"
         placeholder="Click to activate first input"
