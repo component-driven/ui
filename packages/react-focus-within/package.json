@@ -1,7 +1,7 @@
 {
   "name": "@component-driven/react-focus-within",
   "description": "The missing JS API of the CSS `:focus-within` for React",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "dist/react-focus-within.cjs.js",
   "module": "dist/react-focus-within.esm.js",
   "dependencies": {
