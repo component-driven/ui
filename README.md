@@ -1,6 +1,6 @@
 # react-focus-utils
 
-![Release](https://github.com/component-driven/react-focus-utils/workflows/Release/badge.svg) [![npm](https://img.shields.io/npm/v/@component-driven/react-focus-utils.svg)](https://www.npmjs.com/package/@component-driven/react-focus-utils)
+![Release](https://github.com/component-driven/react-focus-utils/workflows/Release/badge.svg)
 
 This package includes:
 
