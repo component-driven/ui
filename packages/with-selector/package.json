@@ -1,7 +1,7 @@
 {
   "name": "@component-driven/with-selector",
   "description": "Preview components in specific pseudo-state like :hover, :focused, :active.",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "main": "dist/with-selector.cjs.js",
   "module": "dist/with-selector.esm.js",
   "peerDependencies": {
