@@ -15,8 +15,7 @@
     "prerelease": "npm run build",
     "release": "changeset publish",
     "start": "styleguidist server",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build",
+    "styleguide": "styleguidist build",
     "test": "echo \"Error: no test specified\" && exit 0",
     "lint": "eslint ."
   },

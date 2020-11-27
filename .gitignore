@@ -25,3 +25,6 @@ typings/
 
 # Yarn Integrity file
 .yarn-integrity
+
+# Styleguide
+/styleguide
