@@ -23,7 +23,7 @@
   "author": "Andrey Okonetchnikov <andrey@okonet.ru>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/component-driven/react-focus-utils/issues"
+    "url": "https://github.com/component-driven/ui/issues"
   },
   "homepage": "https://react-focus-utils.netlify.com",
   "dependencies": {

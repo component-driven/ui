@@ -35,7 +35,7 @@ module.exports = {
   showSidebar: true,
   ribbon: {
     // Link to open on the ribbon click (required)
-    url: 'https://github.com/component-driven/react-focus-utils',
+    url: 'https://github.com/component-driven/ui',
     // Text to show on the ribbon (optional)
     text: 'Fork me on GitHub'
   }

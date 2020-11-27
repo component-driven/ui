@@ -1,6 +1,6 @@
-# react-focus-utils
+# Component Driven UI
 
-![Release](https://github.com/component-driven/react-focus-utils/workflows/Release/badge.svg)
+![Release](https://github.com/component-driven/ui/workflows/Release/badge.svg)
 
 This package includes:
 
