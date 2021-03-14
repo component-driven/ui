@@ -26,6 +26,7 @@
   },
   "homepage": "https://react-focus-utils.netlify.com",
   "dependencies": {
+    "find-up": "^5.0.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "styled-components": "^5.0.1"
