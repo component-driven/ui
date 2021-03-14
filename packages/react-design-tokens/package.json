@@ -1,7 +1,7 @@
 {
   "name": "@component-driven/react-design-tokens",
   "description": "React components to document design tokens in a styleguide",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "main": "dist/react-design-tokens.cjs.js",
   "module": "dist/react-design-tokens.esm.js",
   "peerDependencies": {
