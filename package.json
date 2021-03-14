@@ -14,9 +14,9 @@
     "build": "preconstruct build",
     "prerelease": "npm run build",
     "release": "changeset publish",
-    "start": "styleguidist server",
+    "start": "preconstruct watch && styleguidist server",
     "styleguide": "styleguidist build",
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "preconstruct build",
     "lint": "eslint ."
   },
   "author": "Andrey Okonetchnikov <andrey@okonet.ru>",
