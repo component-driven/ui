@@ -7,7 +7,7 @@ module.exports = {
   sections: [
     {
       name: 'Introduction',
-      content: 'Readme.md'
+      content: './Readme.md'
     },
     {
       sectionDepth: 1,
