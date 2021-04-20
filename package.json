@@ -41,6 +41,7 @@
     "@webpack-blocks/babel": "^2.0.1",
     "@webpack-blocks/webpack": "^2.0.1",
     "babel-eslint": "^10.1.0",
+    "changeset": "^0.2.6",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.3.0",
