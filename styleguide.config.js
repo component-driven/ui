@@ -33,23 +33,20 @@ module.exports = {
     Wrapper: file(".styleguidist/StyleguideProvider.tsx")
   },
   require: [file(".styleguidist/setup.js")],
-  propsParser: require("react-docgen-typescript").withCustomConfig(
-    file("packages/components/tsconfig.json"),
-    {
-      propFilter(prop) {
-        if (prop.parent) {
-          return (
-            !prop.parent.fileName.includes("node_modules") ||
-            prop.parent.fileName.includes("@types/styled-system")
-          )
-        }
-        return true
-      },
-      componentNameResolver: (exp, source) =>
-        exp.getName() === "StyledComponentClass" &&
-        require("react-docgen-typescript").getDefaultExportForFile(source)
-    }
-  ).parse,
+  propsParser: require("react-docgen-typescript").withCustomConfig(file("tsconfig.json"), {
+    propFilter(prop) {
+      if (prop.parent) {
+        return (
+          !prop.parent.fileName.includes("node_modules") ||
+          prop.parent.fileName.includes("@types/styled-system")
+        )
+      }
+      return true
+    },
+    componentNameResolver: (exp, source) =>
+      exp.getName() === "StyledComponentClass" &&
+      require("react-docgen-typescript").getDefaultExportForFile(source)
+  }).parse,
   webpackConfig: {
     module: {
       rules: [
