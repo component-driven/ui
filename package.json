@@ -11,6 +11,7 @@
   },
   "scripts": {
     "postinstall": "preconstruct dev",
+    "changeset": "changeset",
     "build": "preconstruct build",
     "prerelease": "npm run build",
     "release": "changeset publish",
