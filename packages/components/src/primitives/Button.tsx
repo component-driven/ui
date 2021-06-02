@@ -38,7 +38,6 @@ export type ButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "d
 }
 
 const Button = styled.button<ButtonProps>(
-  // TODO: The `css` calls are still not typed against our theme so be careful for now!
   css({
     appearance: "none",
     display: "inline-block",
