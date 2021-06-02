@@ -31,8 +31,8 @@ export const focusBoxShadow =
  */
 export const focusRingStyles =
   (color: string, disabled: boolean = false) =>
-  (theme: Theme) => {
-    const themeColor = transparentize(color, 0)(getTheme(theme)) // This serves as a getter from theme
+  (props: object) => {
+    const themeColor = transparentize(color, 0)(getTheme(props)) // This serves as a getter from theme
     if (disabled) {
       return {
         outline: "none"
@@ -42,7 +42,7 @@ export const focusRingStyles =
       outline: "none",
       borderColor: themeColor,
       transition: "box-shadow .25s",
-      ...focusBoxShadow(themeColor)(theme)
+      ...focusBoxShadow(themeColor)(props)
     }
   }
 
@@ -57,8 +57,8 @@ export const focusRingStyles =
  */
 export const focusRing =
   (color: string, disabled = false, hover = false) =>
-  (theme: Theme) => {
-    const styles = focusRingStyles(color, disabled)(getTheme(theme))
+  (props: object) => {
+    const styles = focusRingStyles(color, disabled)(getTheme(props))
     const baseStyles = {
       ".js-focus-visible &:focus:not(.focus-visible)": {
         outline: 0
