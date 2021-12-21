@@ -10,38 +10,41 @@ function addStylesheetRule(rule) {
 
 const generateCssClassName = customAlphabet(
   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
-  32
+  16
 )
 
 // Inspired by https://codesandbox.io/s/pseudo-class-sticker-sheet-jiu2x
 const useAddSelector = (ref, selector) => {
   const [modifiedClassName, setModifiedClassName] = useState('')
   useEffect(() => {
-    const className = ref.current.classList[ref.current.classList.length - 1]
+    const className = ref.current?.classList[ref.current.classList.length - 1]
     const fullSelector = `${className && `.${className}`}${selector}`
-    // NOTE: This could be improved, because checking the provided selector starts with a '.'
-    // is probably not the best way to determine the selector is a class name or not.
-    const isClassNameSelector = selector.startsWith('.')
-    let newRule = ''
-    for (const ss of document.styleSheets) {
-      for (const rule of ss.cssRules) {
-        if (fullSelector === rule.selectorText) {
-          const cssClassName = isClassNameSelector ? selector : `.${generateCssClassName()}`
-          newRule = `${cssClassName} { ${rule.style.cssText}}`
-          setModifiedClassName(cssClassName.substring(1))
-          break
+    const newClassName = generateCssClassName()
+    let newRules = []
+    for (const styleSheet of document.styleSheets) {
+      for (const rule of styleSheet.cssRules) {
+        if (rule.selectorText?.startsWith(fullSelector)) {
+          /**
+           * Replace current CSS selector with the generated one so that
+           * after adding the newClassName all children can be matched
+           * i.e. we map:
+           * .component:focus > input -> .generatedClass > input
+           */
+          const CSSSelector = rule.selectorText.replace(fullSelector, `.${newClassName}`)
+          newRules.push(`${CSSSelector} { ${rule.style.cssText} }`)
         }
       }
-      if (newRule) {
-        addStylesheetRule(newRule)
-        break
+      if (newRules.length > 0) {
+        newRules.forEach(addStylesheetRule)
+        setModifiedClassName(newClassName)
+        break // Avoid triggering infinite loop since we're modifying stylesheets
       }
     }
   }, [ref, selector])
   return [modifiedClassName]
 }
 
-const WithSelector = props => {
+const WithSelector = (props) => {
   const ref = useRef(null)
   const [modifiedClassName] = useAddSelector(ref, props.selector)
 
