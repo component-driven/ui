@@ -58,3 +58,58 @@ const Button = styled('button')`
   </WithSelector>
 </>
 ```
+
+## Support for nested selectors
+
+```jsx
+import styled from 'styled-components'
+
+const InputWrapper = styled('div')({
+  padding: 4,
+  border: '1px solid #ccc',
+  borderRadius: 3,
+  background: '#efefef',
+  '& > input': {
+    border: '1px solid green'
+  },
+  '> button': {
+    position: 'relative',
+    appearance: 'none',
+    '::after': {
+      position: 'absolute',
+      right: 0,
+      top: 0,
+      background: 'pink',
+      content: "''"
+    }
+  },
+  ':focus-within': {
+    background: '#ccc',
+    input: {
+      outline: 'none',
+      borderColor: 'red'
+    },
+    button: {
+      marginLeft: 10,
+      borderColor: 'yellow',
+      '::after': {
+        content: "'focus'"
+      }
+    }
+  }
+})
+
+const Input = React.forwardRef((props, ref) => (
+  <InputWrapper {...props} ref={ref}>
+    <input type="text" />
+    <button>this is a nested button</button>
+  </InputWrapper>
+))
+
+;<>
+  <Input placeholder="Normal input" />
+  <WithSelector selector=":focus-within">
+    <Input placeholder="Normal input" />
+  </WithSelector>
+</>
+```
