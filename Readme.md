@@ -10,4 +10,4 @@ Includes following packages:
 - `WithSelector` component to allow preview of pseudo-styles like `:hover` and `:focus` in styleguides
 - `mixins` — a collection of mixins for pseudo styles (`:focus`, `:disabled`) to work with CSS-in-JS libraries
 
-## [Documentation](https://react-focus-utils.netlify.com)
+## [Documentation](https://ui.component-driven.dev)
