@@ -15,20 +15,6 @@ module.exports = {
       name: "Components",
       components: `packages/components/**/[A-Z]*.tsx`
     },
-    // {
-    //   sectionDepth: 1,
-    //   name: "react-design-tokens",
-    //   sections: [
-    //     {
-    //       name: "About",
-    //       content: "packages/react-design-tokens/Readme.md"
-    //     },
-    //     {
-    //       name: "Components",
-    //       components: "packages/react-design-tokens/src/components/[A-Z]*.jsx"
-    //     }
-    //   ]
-    // },
     {
       name: "Packages",
       sections: packages.map((pkg) => ({

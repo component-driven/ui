@@ -1,5 +1,4 @@
 ```jsx harmony
-import theme from '../theme'
-
+import theme from "./theme"
 ;<Colors theme={theme} />
 ```

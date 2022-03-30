@@ -1,8 +1,7 @@
 ```jsx harmony
-import { Grid } from 'theme-ui'
-import theme from '../theme'
-import { Swatch, Swatches, SwatchToken, SpacingSwatch } from '../'
-
+import { Grid } from "theme-ui"
+import theme from "./theme"
+import { Swatch, Swatches, SwatchToken, SpacingSwatch } from "."
 ;<Grid gap={4}>
   <Swatches theme={theme} items={theme.space}>
     {(token, value) => (

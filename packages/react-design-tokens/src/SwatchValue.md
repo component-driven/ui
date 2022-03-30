@@ -15,10 +15,10 @@ or `css` and `style` to customize everything else:
 ```jsx harmony
 <SwatchValue
   css={{
-    fontSize: '24px'
+    fontSize: "24px"
   }}
   style={{
-    background: 'yellow'
+    background: "yellow"
   }}
 >
   Custom value

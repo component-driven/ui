@@ -1,7 +1,7 @@
 /* @jsx jsx */
-import { jsx } from "theme-ui";
-import React from "react";
-import { valuePropType } from "../propTypes";
+import { jsx } from "theme-ui"
+import React from "react"
+import { valuePropType } from "./propTypes"
 
 /**
  * A swatch to render a `textStyle` variant. Provide the sample text as `children`.
@@ -12,20 +12,20 @@ import { valuePropType } from "../propTypes";
  * @constructor
  */
 const TextStyleSwatch = ({ value, css: componentCSS, ...rest }) => (
-	<p
-		sx={{
-			alignSelf: "center",
-			m: 0,
-			...value,
-			...componentCSS
-		}}
-		{...rest}
-	/>
-);
+  <p
+    sx={{
+      alignSelf: "center",
+      m: 0,
+      ...value,
+      ...componentCSS
+    }}
+    {...rest}
+  />
+)
 
 TextStyleSwatch.propTypes = {
-	...valuePropType
-};
+  ...valuePropType
+}
 
 /** @component */
-export default TextStyleSwatch;
+export default TextStyleSwatch

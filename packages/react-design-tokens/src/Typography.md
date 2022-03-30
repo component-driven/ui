@@ -1,6 +1,5 @@
 ```jsx harmony
-import theme from '../theme'
-
+import theme from "./theme"
 ;<Typography theme={theme} />
 ```
 
@@ -13,8 +12,7 @@ Consider this is your `Text` component that defines text styles:
 ```
 
 ```jsx harmony
-import theme from '../theme'
-import { textStyles } from '../examples/Text'
-
+import theme from "./theme"
+import { textStyles } from "./examples/Text"
 ;<Typography theme={{ ...theme, textStyles }} />
 ```

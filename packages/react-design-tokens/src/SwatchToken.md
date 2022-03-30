@@ -15,10 +15,10 @@ For more customization use `css` and `style` props
 ```jsx harmony
 <SwatchToken
   css={{
-    fontSize: '24px'
+    fontSize: "24px"
   }}
   style={{
-    color: 'blue'
+    color: "blue"
   }}
 >
   Custom style
