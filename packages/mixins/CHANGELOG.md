@@ -1,5 +1,11 @@
 # @component-driven/mixins
 
+## 3.0.0
+
+### Major Changes
+
+- 3829331: Convert to TypeScript
+
 ## 2.0.1
 
 ### Patch Changes
