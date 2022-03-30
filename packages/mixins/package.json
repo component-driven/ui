@@ -7,12 +7,20 @@
   "dependencies": {
     "@component-driven/with-selector": "*",
     "@theme-ui/color": "^0.3.1",
-    "focus-visible": "^5.0.2"
+    "focus-visible": "^5.0.2",
+    "styled-system": "^5.1.5",
+    "@styled-system/css": "^5.1.5"
   },
   "peerDependencies": {
-    "focus-visible": ">=5.0",
     "react": ">=16.0",
     "react-dom": ">=16.0"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.3",
+    "@types/styled-system": "^5.1.10",
+    "@types/styled-system__css": "^5.0.13",
+    "@types/theme-ui": "^0.6.0",
+    "@types/theme-ui__color": "^0.3.2"
   },
   "author": "Andrey Okonetchnikov <andrey@okonet.ru>",
   "license": "MIT",
