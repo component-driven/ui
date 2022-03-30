@@ -20,14 +20,13 @@ export { default as Stack } from "./primitives/Stack"
 export { default as Text, textStyles } from "./primitives/Text"
 export { default as VisuallyHidden } from "./primitives/HiddenVisually"
 export * from "./primitives/Page"
-export { default as InteractiveComponentStates } from "./InteractiveComponentStates"
+export { default as InteractiveComponentStates } from "./interactiveComponentStates"
 
 export { default as theme } from "./theme"
 
-export type SystemCSSObject<T> = T &
-  {
-    [K in CSS.Pseudos]?: T
-  }
+export type SystemCSSObject<T> = T & {
+  [K in CSS.Pseudos]?: T
+}
 
 export type CssProperties = {
   [K in keyof StandardCSSProperties]: StandardCSSProperties[K]

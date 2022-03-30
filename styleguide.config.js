@@ -1,7 +1,13 @@
 const path = require("path")
 const findUp = require("find-up")
 
-const packages = ["react-design-tokens", "react-focus-within", "with-selector", "mixins"]
+const packages = [
+  "components",
+  "react-design-tokens",
+  "react-focus-within",
+  "with-selector",
+  "mixins"
+]
 
 const file = (filepath) => path.join(__dirname, filepath)
 
@@ -12,14 +18,10 @@ module.exports = {
       content: "./Readme.md"
     },
     {
-      name: "Components",
-      components: `packages/components/**/[A-Z]*.tsx`
-    },
-    {
       name: "Packages",
       sections: packages.map((pkg) => ({
         name: pkg,
-        components: `packages/${pkg}/src/[A-Z]*.{js,ts,jsx,tsx}`
+        components: `packages/${pkg}/**/[A-Z]*.{js,ts,jsx,tsx}`
       })),
       sectionDepth: 1
     }
@@ -73,6 +75,7 @@ module.exports = {
     const pkgPath = findUp.sync("package.json", { cwd: componentPath })
     if (!pkgPath) {
       console.error(`Could not find \`package.json\` for ${componentName}`)
+      return ""
     }
     const { name } = require(pkgPath)
     return `import { ${componentName} } from ${name}`
