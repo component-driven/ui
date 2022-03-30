@@ -1,11 +1,11 @@
 {
   "name": "@component-driven/components",
   "description": "React components for rapid UI creation",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "dist/components.cjs.js",
   "module": "dist/components.esm.js",
   "dependencies": {
-    "@component-driven/mixins": "^2.0.1",
+    "@component-driven/mixins": "^3.0.0",
     "@component-driven/react-design-tokens": "^2.1.0",
     "@component-driven/with-selector": "^2.1.1",
     "@styled-system/css": "^5.1.5",
