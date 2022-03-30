@@ -1,5 +1,11 @@
 # @component-driven/with-selector
 
+## 2.2.0
+
+### Minor Changes
+
+- 3b955cf: Add support for nested selectors
+
 ## 2.1.1
 
 ### Patch Changes

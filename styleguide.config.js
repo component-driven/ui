@@ -1,7 +1,7 @@
 const path = require("path")
-const readPkgUp = require("read-pkg-up")
+const findUp = require("find-up")
 
-const packages = ["react-focus-within", "with-selector", "mixins"]
+const packages = ["react-design-tokens", "react-focus-within", "with-selector", "mixins"]
 
 const file = (filepath) => path.join(__dirname, filepath)
 
@@ -9,24 +9,33 @@ module.exports = {
   sections: [
     {
       name: "Introduction",
-      content: "./README.md"
+      content: "./Readme.md"
     },
     {
       name: "Components",
       components: `packages/components/**/[A-Z]*.tsx`
     },
+    // {
+    //   sectionDepth: 1,
+    //   name: "react-design-tokens",
+    //   sections: [
+    //     {
+    //       name: "About",
+    //       content: "packages/react-design-tokens/Readme.md"
+    //     },
+    //     {
+    //       name: "Components",
+    //       components: "packages/react-design-tokens/src/components/[A-Z]*.jsx"
+    //     }
+    //   ]
+    // },
     {
       name: "Packages",
       sections: packages.map((pkg) => ({
         name: pkg,
-        components: `packages/${pkg}/**/[A-Z]*.js`
+        components: `packages/${pkg}/src/[A-Z]*.{js,ts,jsx,tsx}`
       })),
       sectionDepth: 1
-    },
-    {
-      name: "Utilities",
-      components: "packages/**/mixins.js"
-      // sectionDepth: 1
     }
   ],
   styleguideComponents: {
@@ -51,7 +60,7 @@ module.exports = {
     module: {
       rules: [
         {
-          test: /\.(js|tsx?)$/,
+          test: /\.(jsx?|tsx?)$/,
           exclude: /node_modules/,
           loader: "babel-loader"
         }
@@ -59,22 +68,28 @@ module.exports = {
     }
   },
   getExampleFilename(componentPath) {
+    // Try to locate ${componentName}.md in the same directory
+    // and if not found fallback to Readme.md
     const componentName = path.basename(componentPath, path.extname(componentPath))
-    if (componentPath.includes("components")) {
-      return path.join(path.dirname(componentPath), `${componentName}.md`)
+    const examplePath = findUp.sync(`${componentName}.md`, { cwd: componentPath })
+    if (examplePath) {
+      return examplePath
     }
-    return path.join(path.dirname(componentPath), "..", "Readme.md")
+    const readmePath = findUp.sync("Readme.md", { cwd: componentPath })
+    console.log(readmePath)
+    if (readmePath) {
+      return readmePath
+    }
+    console.error(`Could not find example file for ${componentPath}`)
   },
   getComponentPathLine(componentPath) {
     const componentName = path.basename(componentPath, path.extname(componentPath))
-    const { packageJson } = readPkgUp.sync({ cwd: path.join(__dirname, componentPath) })
-    const { name } = packageJson
-    if (name === "@component-driven/components") {
-      // Named exports
-      return `import { ${componentName} } from ${name}`
+    const pkgPath = findUp.sync("package.json", { cwd: componentPath })
+    if (!pkgPath) {
+      console.error(`Could not find \`package.json\` for ${componentName}`)
     }
-    // Default export
-    return `import ${componentName} from ${name}`
+    const { name } = require(pkgPath)
+    return `import { ${componentName} } from ${name}`
   },
   exampleMode: "expand",
   usageMode: "collapse",
