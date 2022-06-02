@@ -11,3 +11,7 @@ Includes following packages:
 - `mixins` — a collection of mixins for pseudo styles (`:focus`, `:disabled`) to work with CSS-in-JS libraries
 
 ## [Documentation](https://ui.component-driven.dev)
+
+## Aknowledgements
+
+![Powered by Vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)
