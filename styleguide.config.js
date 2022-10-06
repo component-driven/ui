@@ -78,7 +78,7 @@ module.exports = {
       return ""
     }
     const { name } = require(pkgPath)
-    return `import { ${componentName} } from ${name}`
+    return `import { ${componentName} } from "${name}"`
   },
   exampleMode: "expand",
   usageMode: "collapse",
